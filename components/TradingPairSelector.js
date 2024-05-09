@@ -1,18 +1,25 @@
 import React from 'react';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
-function TradingPairSelector({ options, onChange }) {
+function TradingPairSelector({ options, pair, onChange }) {
     return (
-        <div>
-            <label htmlFor="trading-pair-selector">Select a Trading Pair:</label>
-            <select id="trading-pair-selector" onChange={(e) => onChange(e.target.value)}>
-                <option value="">--Please choose an option--</option>
+        <FormControl fullWidth>
+            <InputLabel id="trading-pair-selector-label">Trading Pair</InputLabel>
+            <Select
+                labelId="trading-pair-selector-label"
+                id="trading-pair-selector"
+                label="Trading Pair"
+                value={pair}
+                onChange={(e) => onChange(e.target.value)}
+            >
+
                 {options.map((option, index) => (
-                    <option key={index} value={option.id}>
-                        {option.display_name || option.id}
-                    </option>
+                <MenuItem key={index} value={option.id}>
+                    {option.display_name || option.id}
+                </MenuItem>
                 ))}
-            </select>
-        </div>
+            </Select>
+        </FormControl>
     );
 }
 

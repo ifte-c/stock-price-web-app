@@ -12,8 +12,8 @@ const ChartComponent = ({ data, pair }) => {
                 label: pair,
                 data: data.map(item => item[4]), // Assuming 'item[4]' is the closing price
                 fill: false,
-                backgroundColor: 'rgb(75, 192, 192)',
-                borderColor: 'rgba(75, 192, 192, 0.2)',
+                backgroundColor: 'rgb(30, 135, 229)',
+                borderColor: 'rgba(30, 135, 229, 0.2)',
             },
         ],
     };
@@ -38,12 +38,12 @@ const ChartComponent = ({ data, pair }) => {
             y: {
                 title: {
                     display: true,
-                    text: 'Price (' + pair.slice(-3) +')',
+                    text: 'Price (' + pair.split('-')[1] +')',
                 },
                 ticks: {
                     // Include a dollar sign in the ticks
                     callback: function(value, index, ticks) {
-                        return '$' + value;
+                        return value;
                     }
                 }
             }
@@ -65,9 +65,8 @@ const ChartComponent = ({ data, pair }) => {
         maintainAspectRatio: false
     };
 
-    console.log(chartData);
     return (
-        <div style={{ height: '400px', width: '100%' }}>
+        <div style={{ height: '440px', width: '100%' }}>
             <Line data={chartData} options={options} />
         </div>
     );
