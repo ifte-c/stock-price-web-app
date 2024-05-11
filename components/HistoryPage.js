@@ -81,22 +81,9 @@ export default function HistoryPage({ tradingPairs, handleOptionsChange, chartDa
               </LocalizationProvider>
             </Grid>
           </Grid>
-          {chartData.length > 0 && <ChartComponent data={chartData} pair={selectedPair} />}
+          { chartData !== null && <ChartComponent data={chartData} pair={selectedPair} />}
         </Stack>
       </Container>
       </Box>
   );
 }
-
-{/* <TextField
-  id="outlined-basic"
-  hiddenLabel
-  size="small"
-  variant="outlined"
-  aria-label="Enter your email address"
-  placeholder="Your email address"
-  inputProps={{
-    autoComplete: 'off',
-    'aria-label': 'Enter your email address',
-  }}
-/> */}

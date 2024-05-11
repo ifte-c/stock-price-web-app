@@ -9,7 +9,7 @@ export default function HistoricalPricesPage() {
     const [selectedPair, setSelectedPair] = useState('');
     const [selectedGranularity, setSelectedGranularity] = useState(21600);
     const [selectedDate, setSelectedDate] = useState(Math.floor(dayjs().valueOf() / 300000) * 300000);
-    const [chartData, setChartData] = useState([]);
+    const [chartData, setChartData] = useState(null);
 
     useEffect(() => {
         getTradingPairs().then(data => {
@@ -26,7 +26,6 @@ export default function HistoricalPricesPage() {
         if (pair && granularity) {
             getProductCandles(pair, granularity, date)
                 .then(data => {
-                    console.log(data);
                     setChartData(data);
                 })
                 .catch(error => console.error('Failed to fetch product candles:', error));

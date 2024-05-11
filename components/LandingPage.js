@@ -59,7 +59,7 @@ export default function LandingPage() {
             color="text.secondary"
             sx={{ alignSelf: 'center', width: { sm: '100%', md: '80%' } }}
           >
-            A tool to display historical stock price data on a chart. Data is acquired via the Coinbase public sandbox API.
+            A tool to display mock historical stock price data on a chart. Data is acquired via the Coinbase public sandbox API.
           </Typography>
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
