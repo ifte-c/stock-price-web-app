@@ -1,6 +1,8 @@
-## Getting Started
+# Stock Price Web App
 
-First, run the development server:
+## Adding API credentials
+
+Before building, add a file named `.env` to the root directory containing Coinbase API credentials structured like the following:
 
 ```bash
 API_KEY=""
@@ -8,23 +10,14 @@ API_SECRET=""
 API_PASSPHRASE=""
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Build
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Ensure you have Node.js then run `npm install` in the root directory to install all dependencies. Run `npm run build` to build the application then `npm run start` to start the Node.js server.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-## Learn More
+## Testing Plan
 
-To learn more about Next.js, take a look at the following resources:
+The application should be tested with unit tests and integration tests. The unit tests should test each component (ensuring they render correctly with all expected options) as well as every API call (ensuring they return valid responses with correct data). The integration tests should make sure the components render together correctly and that they update correctly after API calls. For these tests manually selected mock data can be used so the output is predictable and easily comparable.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+These tests should be scripts which can be executed before pushing to the main/production branch.
