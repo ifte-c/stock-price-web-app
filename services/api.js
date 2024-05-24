@@ -17,8 +17,12 @@ function signatureGenerator(secret, timestamp, method, path, body="") {
 const BASE_URL = 'https://api-public.sandbox.exchange.coinbase.com';
 const axiosInstance = axios.create({baseURL: BASE_URL});
 
-axios.defaults.headers.common['CB-ACCESS-KEY'] = process.env.API_KEY;
-axios.defaults.headers.common['CB-ACCESS-PASSPHRASE'] = process.env.API_PASSPHRASE;
+var API_KEY = process.env.API_KEY === undefined ? "" : process.env.API_KEY;
+var API_PASSPHRASE = process.env.API_PASSPHRASE === undefined ? "" : process.env.API_PASSPHRASE;
+var API_SECRET = process.env.API_SECRET === undefined ? "" : process.env.API_SECRET;
+
+axios.defaults.headers.common['CB-ACCESS-KEY'] = API_KEY;
+axios.defaults.headers.common['CB-ACCESS-PASSPHRASE'] = API_PASSPHRASE;
 
 axiosRetry(axiosInstance, { 
     retries: 3,
@@ -37,7 +41,7 @@ export const getTradingPairs = async () => {
     const response = await axiosInstance.get(requestPath, {
         headers: {
             'CB-ACCESS-TIMESTAMP': timestamp,
-            'CB-ACCESS-SIGN': signatureGenerator(process.env.API_SECRET, timestamp, method, requestPath)
+            'CB-ACCESS-SIGN': signatureGenerator(API_SECRET, timestamp, method, requestPath)
         }
     });
 
@@ -60,7 +64,7 @@ export const getProductCandles = async (pair, granularity, start) => {
     const response = await axiosInstance.get(requestPath, {
         headers: {
             'CB-ACCESS-TIMESTAMP': timestamp,
-            'CB-ACCESS-SIGN': signatureGenerator(process.env.API_SECRET, timestamp, method, requestPath)
+            'CB-ACCESS-SIGN': signatureGenerator(API_SECRET, timestamp, method, requestPath)
         }
     })
     
